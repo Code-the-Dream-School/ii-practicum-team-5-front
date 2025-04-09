@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 import { Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { getAllData } from "./util/index";
@@ -35,6 +36,7 @@ function App() {
           <Route path="/forgotpassword" element="" />
           <Route path="/resetpassword" element="" />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
