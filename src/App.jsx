@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Components/Header";
+import HomePage from "./Components/Pages/HomePage";
 import { Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { getAllData } from "./util/index";
@@ -27,14 +28,16 @@ function App() {
         <Box sx={{ paddingX: "7%" }}>
           <Header />
         </Box>
-        <Routes>
-          <Route path="/" element="" />
-          <Route path="/myplan" element="" />
-          <Route path="/login" element="" />
-          <Route path="/register" element="" />
-          <Route path="/forgotpassword" element="" />
-          <Route path="/resetpassword" element="" />
-        </Routes>
+        <Box sx={{ paddingX: "7%", paddingTop: "4%" }}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/myplan" element="" />
+            <Route path="/login" element="" />
+            <Route path="/register" element="" />
+            <Route path="/forgotpassword" element="" />
+            <Route path="/resetpassword" element="" />
+          </Routes>
+        </Box>
       </BrowserRouter>
     </div>
   );
