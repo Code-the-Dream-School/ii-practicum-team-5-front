@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Components/Header";
+import HomePage from "./Components/Pages/HomePage";
 import Footer from "./Components/Footer";
 import PlanPage from "./Components/Pages/PlanPage";
 import Bookmark from "./Components/Pages/Bookmark";
@@ -24,6 +25,16 @@ function App() {
       <BrowserRouter>
         <Box sx={{ paddingX: "7%" }}>
           <Header />
+        </Box>
+        <Box sx={{ paddingX: "7%", paddingTop: "4%" }}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/myplan" element="" />
+            <Route path="/login" element="" />
+            <Route path="/register" element="" />
+            <Route path="/forgotpassword" element="" />
+            <Route path="/resetpassword" element="" />
+          </Routes>
         </Box>
         <Routes>
           <Route path="/" element="" />

@@ -1,29 +1,26 @@
-# Front-End Repo for Node/React Practicum
+## 📦 Getting Started
 
-This will be the front-end for your team's practicum project.
+### Backend
 
-It is suggested that you run these instructions **after** you setup the back-end server first.
-You can go through these steps during your first group meeting in case you need assistance from your mentors.
+To deploy this app locally, find our [backend codebase here](https://github.com/Code-the-Dream-School/ii-practicum-team-5-back).
 
-You will have two folders inside one team folder (one for front-end and one for back-end). Name the parent folder something appropriate (in the below example we title it "Practicum Project").  Then clone directly (do not fork and clone) the front and back repos while inside the parent ("Practicum Project") project folder.
+### Environment Setup
 
-![folders](images/folder_structure.png)
+To run the project locally, create a `.env` file in the root directory and define the following variable:
 
->The front-end app (React) will be running on port 5173. The back-end server will be running on port 8000. You will need to run both the front-end app and the back-end server at the same time to test your app.
+#### Frontend:
 
-### Setting up local development environment
+```
+VITE_API_BASE_URL=YOUR_KEY
+```
+#### Backend:
 
-1. Clone this repository to the folder that was already created for both the front-end and back-end repos
-2. Run `npm install` to install dependencies
-3. Pull the latest version of the `main` branch (when needed)
-4. Run `npm run dev` to start the development server
-5. Open http://localhost:5173 with your browser to see the data received the back-end server.
-6. Now you have your front-end and back-end running locally!
+```
 
-#### Running the front-end server in Visual Studio Code
-Note: In the below example, the group's front-end repository was named `bb-practicum-team1-front` and the back-end repository was named `bb-practicum-team-1-back`.  Your repository will have a different name, but the rest should look the same.
+MONGO_URI=YOUR_KEY
 
-![vsc running](images/front-end-running-vsc.png)
+```
+### Installing
 
-#### Running the front-end server in the browser
-![browser running](images/front-end-running-browser.png)
+In both the backend and the frontend folders you will need to run `npm i` to install the dependencies.
+
