@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import PlanPage from "./Components/Pages/PlanPage";
+import Bookmark from "./Components/Pages/Bookmark";
 import { Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { getAllPlans, getPlansByCategory, getSinglePlan, getPlansByUserId } from "./util/functions";
@@ -31,6 +32,7 @@ function App() {
           <Route path="/register" element="" />
           <Route path="/forgotpassword" element="" />
           <Route path="/resetpassword" element="" />
+          <Route path="/bookmark" element={<Bookmark />} />
         </Routes>
         <Footer />
       </BrowserRouter>

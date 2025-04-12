@@ -59,9 +59,7 @@ const PageHeader = () => {
           justifyContent: "center",
           alignItems: "center",
         }}
-      >
-        
-      </Box>
+      ></Box>
 
       {/* Search Bar */}
       <Box
