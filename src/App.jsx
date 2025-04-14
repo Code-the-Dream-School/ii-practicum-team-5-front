@@ -1,23 +1,19 @@
 import React from "react";
 import Header from "./Components/Header";
+import HomePage from "./Components/Pages/HomePage";
 import { Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import { getAllData } from "./util/index";
+// import { getAllPlans, getPlansByCategory, getSinglePlan, getPlansByUserId } from "./util/functions";
+// import { useEffect } from "react";
 
 // const URL = "http://localhost:8000/api/v1/";
 
 function App() {
-  // const [message, setMessage] = useState("");
-
   // useEffect(() => {
-  //   (async () => {
-  //     const myData = await getAllData(URL);
-  //     setMessage(myData.data);
-  //   })();
-
-  //   return () => {
-  //     console.log("unmounting");
-  //   };
+  //   getAllPlans();
+  //   getPlansByCategory("academic-and-cultural-tour");
+  //   getSinglePlan("oakland-cultural-highlights");
+  //   getPlansByUserId("john - smith");
   // }, []);
 
   return (
@@ -27,14 +23,16 @@ function App() {
         <Box sx={{ paddingX: "7%" }}>
           <Header />
         </Box>
-        <Routes>
-          <Route path="/" element="" />
-          <Route path="/myplan" element="" />
-          <Route path="/login" element="" />
-          <Route path="/register" element="" />
-          <Route path="/forgotpassword" element="" />
-          <Route path="/resetpassword" element="" />
-        </Routes>
+        <Box sx={{ paddingX: "7%", paddingTop: "4%" }}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/myplan" element="" />
+            <Route path="/login" element="" />
+            <Route path="/register" element="" />
+            <Route path="/forgotpassword" element="" />
+            <Route path="/resetpassword" element="" />
+          </Routes>
+        </Box>
       </BrowserRouter>
     </div>
   );
