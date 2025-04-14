@@ -18,7 +18,6 @@ function App() {
   // }, []);
 
   return (
-    
     <div className="app">
       <BrowserRouter>
         <Box sx={{ paddingX: "7%", paddingTop: "4%" }}>
