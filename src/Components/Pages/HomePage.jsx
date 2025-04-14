@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PlanCard from "../Common/PlanCard";
+import Header from "../Header";
+import Footer from "../Footer";
 import { Box, Grid } from "@mui/material";
 import { getData } from "../../util";
 
@@ -22,24 +24,30 @@ const HomePage = () => {
   }, []);
 
   return (
-    <Box>
-      <Grid container spacing={3}>
-        {plans.map((plan) => {
-          return (
-            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={plan.planId}>
-              <PlanCard
-                image={plan.images[0]}
-                title={plan.title}
-                rate={plan.rating}
-                type={plan.type}
-                distance={`${plan.distance}` + " " + `mi`}
-                stopCount={`${plan.stopCount}` + " " + `places`}
-              />
-            </Grid>
-          );
-        })}
-      </Grid>
-    </Box>
+    <>
+      <Box sx={{ paddingX: "7%" }}>
+        <Header />
+      </Box>
+      <Box>
+        <Grid container spacing={3}>
+          {plans.map((plan) => {
+            return (
+              <Grid size={{ xs: 12, sm: 6, md: 3 }} key={plan.planId}>
+                <PlanCard
+                  image={plan.images[0]}
+                  title={plan.title}
+                  rate={plan.rating}
+                  type={plan.type}
+                  distance={`${plan.distance}` + " " + `mi`}
+                  stopCount={`${plan.stopCount}` + " " + `places`}
+                />
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Box>
+      <Footer />
+    </>
   );
 };
 
