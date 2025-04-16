@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Components/Header";
 import HomePage from "./Components/Pages/HomePage";
+import ProfilePage from "./Components/Pages/ProfilePage";
 import { Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { getAllPlans, getPlansByCategory, getSinglePlan, getPlansByUserId } from "./util/functions";
@@ -31,6 +32,7 @@ function App() {
             <Route path="/register" element="" />
             <Route path="/forgotpassword" element="" />
             <Route path="/resetpassword" element="" />
+            <Route path="/profilepage" element={<ProfilePage />} />
           </Routes>
         </Box>
       </BrowserRouter>
