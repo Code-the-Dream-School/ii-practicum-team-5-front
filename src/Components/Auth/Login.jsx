@@ -171,8 +171,12 @@ const LoginPage = ({ open, handleClose, onSwitchToRegister }) => {
 
       <DialogContent
         sx={{
-          px: { xs: 2, sm: 6 },
-          py: { xs: 2, sm: 4 },
+          px: 2,
+          py: 2,
+          [theme.breakpoints.up("sm")]: {
+            px: 6,
+            py: 4,
+          },
         }}
       >
         <Box
@@ -360,7 +364,8 @@ const LoginPage = ({ open, handleClose, onSwitchToRegister }) => {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              minWidth: { xs: "100%", sm: "300px" },
+              width: "100%",
+              maxWidth: { sm: "50%", md: "100%" },
             }}
           >
             <Typography variant="h5" fontWeight="bold" gutterBottom>

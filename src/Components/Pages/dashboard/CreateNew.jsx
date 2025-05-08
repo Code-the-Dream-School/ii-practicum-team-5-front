@@ -20,10 +20,7 @@ function CreateNew() {
   const navigate = useNavigate();
   const { token, user } = useAuth();
 
-  // TODO: Create the Add images and add stops components to allow users to add images and stops to their plans.
-
   useEffect(() => {
-    // FIXME: Instead of just redirecting user to home, show a not authorized message with login button or redirect to login page
     if (!token || !user) return navigate("/");
 
     (async () => {
@@ -106,6 +103,7 @@ function CreateNew() {
               }
             />
           </FormControl>
+
           <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}>
             <Button
               variant="outlined"
