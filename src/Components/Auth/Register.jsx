@@ -177,7 +177,7 @@ const RegisterPage = ({ open, handleClose, onSwitchToLogin }) => {
           p: { xs: 4, sm: 8 },
           m: { xs: 2, sm: 3 },
           width: "100%",
-          maxWidth: 700,
+          maxWidth: { xs: 200, sm: 550, lg: 700 },
         }}
       >
         <Box>
@@ -185,18 +185,18 @@ const RegisterPage = ({ open, handleClose, onSwitchToLogin }) => {
           <Box
             sx={{
               display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
+              flexDirection: { xs: "column", md: "row" },
               gap: 2,
             }}
           >
             {/* Form */}
             <Box
               sx={{
-                flex: 1,
+                flexBasis: { xs: "100%", md: "50%" },
+                flexGrow: 1,
+                flexShrink: 1,
                 px: 2,
                 py: 3,
-                minWidth: { xs: "250px", sm: "300px" },
               }}
             >
               <Typography
@@ -315,15 +315,17 @@ const RegisterPage = ({ open, handleClose, onSwitchToLogin }) => {
             {/* Right Section */}
             <Box
               sx={{
-                flex: 1,
-                minWidth: { xs: "250px", sm: "300px" },
+                flexBasis: { xs: "100%", md: "50%" },
+                flexGrow: 1,
+                flexShrink: 1,
                 backgroundColor: "#484747",
                 color: "white",
                 px: 2,
                 py: 4,
-                display: "flex",
+                display: { xs: "none", md: "flex" },
                 flexDirection: "column",
                 justifyContent: "center",
+                alignItems: "center",
                 textAlign: "center",
               }}
             >
@@ -336,12 +338,12 @@ const RegisterPage = ({ open, handleClose, onSwitchToLogin }) => {
               </Typography>
               <Box
                 sx={{
-                  backgroundImage: "url(/images/register.jpg)",
+                  backgroundImage: "url(/images/login.jpg)",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   width: "100%",
                   maxWidth: 350,
-                  height: 180,
+                  height: { xs: 150, sm: 190 },
                   mx: "auto",
                   borderRadius: 2,
                 }}

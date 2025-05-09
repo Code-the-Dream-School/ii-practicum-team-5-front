@@ -169,25 +169,25 @@ const LoginPage = ({ open, handleClose, onSwitchToRegister }) => {
           p: { xs: 4, sm: 8 },
           m: { xs: 2, sm: 3 },
           width: "100%",
-          maxWidth: 700,
+          maxWidth: { xs: 200, sm: 550, lg: 700 },
         }}
       >
         <Box>
           <Box
             sx={{
               display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
+              flexDirection: { xs: "column", md: "row" },
               gap: 2,
             }}
           >
             {/* Left Section */}
             <Box
               sx={{
-                flex: 1,
+                flexBasis: { xs: "100%", md: "50%" },
+                flexGrow: 1,
+                flexShrink: 1,
                 px: 2,
                 py: 3,
-                minWidth: { xs: "250px", sm: "300px" },
               }}
             >
               {!showForgotPassword ? (
@@ -364,15 +364,17 @@ const LoginPage = ({ open, handleClose, onSwitchToRegister }) => {
             {/* Right Section */}
             <Box
               sx={{
-                flex: 1,
-                minWidth: { xs: "250px", sm: "300px" },
+                flexBasis: { xs: "100%", md: "50%" },
+                flexGrow: 1,
+                flexShrink: 1,
                 backgroundColor: "#484747",
                 color: "white",
                 px: 2,
                 py: 4,
-                display: "flex",
+                display: { xs: "none", md: "flex" },
                 flexDirection: "column",
                 justifyContent: "center",
+                alignItems: "center",
                 textAlign: "center",
               }}
             >
@@ -390,7 +392,7 @@ const LoginPage = ({ open, handleClose, onSwitchToRegister }) => {
                   backgroundPosition: "center",
                   width: "100%",
                   maxWidth: 350,
-                  height: 190,
+                  height: { xs: 150, sm: 190 },
                   mx: "auto",
                   borderRadius: 2,
                 }}
