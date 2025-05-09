@@ -171,12 +171,8 @@ const LoginPage = ({ open, handleClose, onSwitchToRegister }) => {
 
       <DialogContent
         sx={{
-          px: 2,
-          py: 2,
-          [theme.breakpoints.up("sm")]: {
-            px: 6,
-            py: 4,
-          },
+          px: { xs: 2, sm: 6 },
+          py: { xs: 2, sm: 4 },
         }}
       >
         <Box
@@ -190,7 +186,7 @@ const LoginPage = ({ open, handleClose, onSwitchToRegister }) => {
           <Box
             sx={{
               flex: 1,
-              px: 2,
+              px: { xs: 0, sm: 2 },
               py: 3,
               minWidth: { xs: "100%", sm: "300px" },
             }}
@@ -353,43 +349,45 @@ const LoginPage = ({ open, handleClose, onSwitchToRegister }) => {
           </Box>
 
           {/* Right Section */}
-          <Box
-            sx={{
-              flex: 1,
-              backgroundColor: "#484747",
-              color: "white",
-              px: 2,
-              py: 4,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-              maxWidth: { sm: "50%", md: "100%" },
-            }}
-          >
-            <Typography variant="h5" fontWeight="bold" gutterBottom>
-              Welcome to OneDayPlan!
-            </Typography>
-            <Typography variant="body2" sx={{ mb: 5, px: 2 }}>
-              Get started now and make each day count by planning fun and
-              meaningful activities that fit your lifestyle!
-            </Typography>
+          {!fullScreen && (
             <Box
-              component="img"
-              src="https://s3-alpha-sig.figma.com/img/48f1/4826/c25c43d183d79ae91c15f66b7e2f61f8?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TE-A-vmPCp~~Pp13vu9Pjz0g2BysQrB15UKyQIwref7o-EESixHLj-aFTRRXWsk1tTkMDtEwOR0m3rOg-hXkywniX3WpFCdGe8ys6BJz9Bg46toz3Gdg4P~RZkMIhWV31~1QcfhCU-WgBmOOFcKCjcI-X2Us7dtYmYb~XcciPvktsiWNeUEzXkR5WD4KmGrsoO2n~YbjBaE8FovtQUZAGPPY3wGXGW7B6hJ8OD4osAezrOrOhPfRTD3tqg4ws00kTW11CQljoCG9q0fSNc7Nbj9ABqiuRaoDSBBGl3~R-bnGSv1GiuzQ72O7K-K-k57aBvKRnFwYTAQTe~VtDLSQfg__"
-              alt="City View"
               sx={{
+                flex: 1,
+                backgroundColor: "#484747",
+                color: "white",
+                px: 2,
+                py: 4,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
                 width: "100%",
-                maxWidth: { xs: "100%", sm: 350 },
-                height: { xs: 150, sm: 190 },
-                objectFit: "cover",
-                objectPosition: "bottom",
-                mx: "auto",
-                borderRadius: 2,
+                maxWidth: { sm: "50%", md: "100%" },
               }}
-            />
-          </Box>
+            >
+              <Typography variant="h5" fontWeight="bold" gutterBottom>
+                Welcome to OneDayPlan!
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 5, px: 2 }}>
+                Get started now and make each day count by planning fun and
+                meaningful activities that fit your lifestyle!
+              </Typography>
+              <Box
+                component="img"
+                src="https://s3-alpha-sig.figma.com/img/48f1/4826/c25c43d183d79ae91c15f66b7e2f61f8?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TE-A-vmPCp~~Pp13vu9Pjz0g2BysQrB15UKyQIwref7o-EESixHLj-aFTRRXWsk1tTkMDtEwOR0m3rOg-hXkywniX3WpFCdGe8ys6BJz9Bg46toz3Gdg4P~RZkMIhWV31~1QcfhCU-WgBmOOFcKCjcI-X2Us7dtYmYb~XcciPvktsiWNeUEzXkR5WD4KmGrsoO2n~YbjBaE8FovtQUZAGPPY3wGXGW7B6hJ8OD4osAezrOrOhPfRTD3tqg4ws00kTW11CQljoCG9q0fSNc7Nbj9ABqiuRaoDSBBGl3~R-bnGSv1GiuzQ72O7K-K-k57aBvKRnFwYTAQTe~VtDLSQfg__"
+                alt="City View"
+                sx={{
+                  width: "100%",
+                  maxWidth: { xs: "100%", sm: 350 },
+                  height: { xs: 150, sm: 190 },
+                  objectFit: "cover",
+                  objectPosition: "bottom",
+                  mx: "auto",
+                  borderRadius: 2,
+                }}
+              />
+            </Box>
+          )}
         </Box>
       </DialogContent>
     </Dialog>
