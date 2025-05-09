@@ -8,7 +8,7 @@ function NotFound404() {
     <>
       <Box
         sx={{
-          paddingX: "7%",
+          px: { xs: 2, sm: 4, md: "7%" },
           position: "relative",
           zIndex: 10,
           backgroundColor: "white",
@@ -24,8 +24,8 @@ function NotFound404() {
             justifyContent: "center",
             alignItems: "center",
             textAlign: { xs: "center", md: "left" },
-            gap: 4,
-            py: 4,
+            gap: { xs: 4, md: 8 },
+            py: 6,
           }}
         >
           {/* Left side (text and button) */}
@@ -33,9 +33,9 @@ function NotFound404() {
             sx={{
               display: "flex",
               flexDirection: "column",
-              alignItems: "flex-start",
-              textAlign: "left",
-              mb: { xs: 4, md: 0 },
+              alignItems: { xs: "center", md: "flex-start" },
+              textAlign: { xs: "center", md: "left" },
+              maxWidth: 500,
             }}
           >
             <Typography
@@ -76,7 +76,7 @@ function NotFound404() {
               component={Link}
               to="/"
               sx={{
-                mt: 2,
+                mt: 3,
                 px: 3,
                 py: 1.5,
                 transition: "transform 0.2s ease-in-out",
@@ -95,8 +95,8 @@ function NotFound404() {
             src="/images/404-header.jpg"
             alt="Page Not Found"
             sx={{
-              width: { xs: "100%", sm: 300, md: 400 },
-              maxWidth: "100%",
+              width: { xs: 200, sm: 300, md: 400 },
+
               height: "auto",
               animation: "float 3s ease-in-out infinite",
               "@keyframes float": {
@@ -104,7 +104,6 @@ function NotFound404() {
                 "50%": { transform: "translateY(-15px)" },
                 "100%": { transform: "translateY(0px)" },
               },
-              ml: { md: 30 },
             }}
           />
         </Box>

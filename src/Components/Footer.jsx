@@ -10,10 +10,22 @@ function Footer() {
         backgroundColor: "#333333",
         color: "white",
         display: "flex",
-        justifyContent: "space-evenly",
+        justifyContent: { xs: "center", sm: "space-evenly" },
+        flexDirection: { xs: "column", sm: "row" },
+        alignItems: { xs: "center", sm: "flex-start" },
+        flexWrap: "wrap",
+        textAlign: { xs: "center", sm: "left" },
+        px: 2,
+        py: 4,
       }}
     >
-      <Box sx={{ p: 5 }}>
+      <Box
+        sx={{
+          p: { xs: 0, sm: 2 },
+          mb: { xs: 2, sm: 0 },
+          width: { xs: "100%", sm: "auto" },
+        }}
+      >
         <Typography
           component="div"
           sx={{
@@ -21,7 +33,7 @@ function Footer() {
             color: "white",
           }}
         >
-          <ul style={{ listStyleType: "none" }}>
+          <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
             <Link href="/" color="primary" underline="none">
               <li>Home</li>
             </Link>
@@ -46,8 +58,9 @@ function Footer() {
 
       <Box
         sx={{
-          p: 5,
-          marginRight: "400px",
+          p: { xs: 0, sm: 2 },
+          mb: { xs: 2, sm: 0 },
+          width: { xs: "100%", sm: "auto" },
         }}
       >
         <Typography
@@ -57,7 +70,7 @@ function Footer() {
             color: "white",
           }}
         >
-          <ul style={{ listStyleType: "none" }}>
+          <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
             <Link href="/" color="primary" underline="none">
               <li>Museum</li>
             </Link>

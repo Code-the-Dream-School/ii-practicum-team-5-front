@@ -55,7 +55,7 @@ const PlanDetails = ({
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, mb: 2 }}>
           <Typography
             variant="subtitle1"
-            sx={{ color: "#616161", fontSize: "15px" }}
+            sx={{ color: "#616161", fontSize: { xs: "14px", sm: "15px" } }}
           >
             Created by <Link to={`/user/${userId._id}`}>{userId.name}</Link>
           </Typography>
@@ -67,15 +67,15 @@ const PlanDetails = ({
           </Typography>
           <Typography
             variant="subtitle1"
-            sx={{ color: "#616161", fontSize: "15px" }}
+            sx={{ color: "#616161", fontSize: { xs: "14px", sm: "15px" } }}
           >{`${type}`}</Typography>
           <Typography
             variant="subtitle1"
-            sx={{ color: "#616161", fontSize: "15px" }}
+            sx={{ color: "#616161", fontSize: { xs: "14px", sm: "15px" } }}
           >{`${distance} miles`}</Typography>
           <Typography
             variant="subtitle1"
-            sx={{ color: "#616161", fontSize: "15px" }}
+            sx={{ color: "#616161", fontSize: { xs: "14px", sm: "15px" } }}
           >{`${stopCount} places`}</Typography>
           <Typography
             variant="subtitle1"
@@ -95,7 +95,7 @@ const PlanDetails = ({
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: "1.5fr 1fr",
+            gridTemplateColumns: { xs: "1fr", sm: "1.5fr 1fr" },
             gap: 4,
             marginTop: 4,
             marginBottom: 4,
@@ -104,7 +104,7 @@ const PlanDetails = ({
           {/* Large Placeholder Image */}
           <Box
             component="img"
-            src="https://s3-alpha-sig.figma.com/img/40d7/ca50/7f6f18d45d4753640c9eb44d82e18f33?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=DZeqL47OAWgKoGNpmElng4WfiPVcCHNVrbbQ4094NiQkQzX06-sCDLrsJD47~HQlSLEpj0iLlX5aIQqScF3EuTrjBd7mxmrw97Y8VZGRRs0RzSDPLLSqrnmPoxQO1erU7xLqePS6C--ZoBkTMvG7werxQ0IAgkBg2yd1OlNn5XXdKphbYEAP9Ymgw9sTCXZWD9TuHkAXTsV86k0BfG7AwaVXW0xINjZ1g~NJw5dAWXuwdxzXecXxcizi8u9kRCxLq-J~OtUq1nPklNEDfkuxoBXCRXDFv1PMjlyvyxs9RbA1u3fB~O9mcT~IzOFQa3mCM~l8OGruBhuS5m0by3Wmrg__"
+            src="/images/map.png"
             alt="Main plan visual"
             sx={{
               width: "100%",
@@ -116,8 +116,8 @@ const PlanDetails = ({
 
           <ImageList
             sx={{
-              width: 300,
-              height: 450,
+              width: { xs: "100%", sm: 300 },
+              height: { xs: 300, sm: 450 },
             }}
             cols={1}
             rowHeight={200}

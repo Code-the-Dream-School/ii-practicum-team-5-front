@@ -11,6 +11,13 @@ import {
   Box,
   Menu,
   MenuItem,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -18,12 +25,16 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuthModal } from "../context/AuthModalContext";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const Header = () => {
   const [openLogoutDialog, setOpenLogoutDialog] = useState(false);
   const [anchorElement, setAnchorElement] = useState(null);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const {
     isLoginOpen,
@@ -56,6 +67,39 @@ const Header = () => {
     setOpenLogoutDialog(false);
   };
 
+  const mobileMenu = (
+    <Drawer
+      anchor="right"
+      open={drawerOpen}
+      onClose={() => setDrawerOpen(false)}
+    >
+      <Box sx={{ width: 250, padding: 2 }}>
+        <List>
+          {user ? (
+            <>
+              <ListItem button onClick={() => navigate("/account")}>
+                <ListItemText primary="My Plans" />
+              </ListItem>
+              <ListItem button onClick={handleLogoutClick}>
+                <LogoutIcon fontSize="small" sx={{ mr: 1 }} />
+                <ListItemText primary="Logout" />
+              </ListItem>
+            </>
+          ) : (
+            <>
+              <ListItem button onClick={openLogin}>
+                <ListItemText primary="Login" />
+              </ListItem>
+              <ListItem button onClick={openRegister}>
+                <ListItemText primary="Register" />
+              </ListItem>
+            </>
+          )}
+        </List>
+      </Box>
+    </Drawer>
+  );
+
   return (
     <div>
       {/* Navbar */}
@@ -77,7 +121,19 @@ const Header = () => {
               />
             </Link>
           </Box>
-          {user ? (
+
+          {isMobile ? (
+            <>
+              <IconButton
+                edge="end"
+                color="inherit"
+                onClick={() => setDrawerOpen(true)}
+              >
+                <MenuIcon />
+              </IconButton>
+              {mobileMenu}
+            </>
+          ) : user ? (
             <>
               <Button
                 sx={{
@@ -119,9 +175,9 @@ const Header = () => {
                 anchorEl={anchorElement}
                 open={Boolean(anchorElement)}
                 onClose={handleCloseMenu}
-                PaperProps={{
-                  sx: { minWidth: 130 },
-                }}
+                // PaperProps={{
+                //   sx: { minWidth: 130 },
+                // }}
               >
                 <MenuItem
                   sx={{
@@ -132,7 +188,7 @@ const Header = () => {
                   }}
                   onClick={handleLogoutClick}
                 >
-                  {<LogoutIcon fontSize="small" />}
+                  {<LogoutIcon fontSize="small" sx={{ mr: 1 }} />}
                   Logout
                 </MenuItem>
               </Menu>
@@ -198,7 +254,7 @@ const Header = () => {
           alignItems: "center",
         }}
       >
-        <Typography variant="h4" color="white">
+        <Typography variant={isMobile ? "h5" : "h4"} color="white">
           Plan your perfect day with ease!
         </Typography>
       </Box>
