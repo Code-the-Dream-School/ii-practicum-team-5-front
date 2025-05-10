@@ -10,6 +10,7 @@ import {
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
+import StopsOnMap from "./StopsOnMap";
 import { Link } from "react-router-dom";
 import Stops from "./Stops";
 
@@ -102,17 +103,16 @@ const PlanDetails = ({
           }}
         >
           {/* Large Placeholder Image */}
-          <Box
+          <StopsOnMap stops={stops} />
+          {/* <Box
             component="img"
-            src="https://s3-alpha-sig.figma.com/img/40d7/ca50/7f6f18d45d4753640c9eb44d82e18f33?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=DZeqL47OAWgKoGNpmElng4WfiPVcCHNVrbbQ4094NiQkQzX06-sCDLrsJD47~HQlSLEpj0iLlX5aIQqScF3EuTrjBd7mxmrw97Y8VZGRRs0RzSDPLLSqrnmPoxQO1erU7xLqePS6C--ZoBkTMvG7werxQ0IAgkBg2yd1OlNn5XXdKphbYEAP9Ymgw9sTCXZWD9TuHkAXTsV86k0BfG7AwaVXW0xINjZ1g~NJw5dAWXuwdxzXecXxcizi8u9kRCxLq-J~OtUq1nPklNEDfkuxoBXCRXDFv1PMjlyvyxs9RbA1u3fB~O9mcT~IzOFQa3mCM~l8OGruBhuS5m0by3Wmrg__"
-            alt="Main plan visual"
             sx={{
               width: "100%",
               height: "100%",
               objectFit: "cover",
               borderRadius: 2,
             }}
-          />
+          /> */}
 
           <ImageList
             sx={{
@@ -167,6 +167,7 @@ PlanDetails.propTypes = {
       name: PropTypes.string,
       imageURL: PropTypes.string,
       address: PropTypes.string,
+      location: PropTypes.arrayOf(PropTypes.number),
     }),
   ),
 };

@@ -21,6 +21,7 @@
     "@mui/lab": "^7.0.0-beta.11",
     "@mui/material": "^7.0.1",
     "@mui/styled-engine-sc": "^7.0.1",
+    "@vis.gl/react-google-maps": "^1.5.2",
     "axios": "^1.6.7",
     "npm-check-updates": "^17.1.16",
     "prop-types": "^15.8.1",

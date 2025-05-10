@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import {
   Box,
@@ -9,11 +9,13 @@ import {
   Button,
 } from "@mui/material";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import MapDialog from "./MapDialog";
 
 const Stops = ({ stops, setStops }) => {
   const nameRef = useRef(null);
   const imageRef = useRef(null);
   const addressRef = useRef(null);
+  const [isMapDialogOpen, setIsMapDialogOpen] = useState(false);
 
   const handleAddStop = () => {
     if (!nameRef || !imageRef || !addressRef) return;
@@ -45,10 +47,23 @@ const Stops = ({ stops, setStops }) => {
     setStops(newStops);
   };
 
+  const handleOpenMap = () => {
+    setIsMapDialogOpen(true);
+  };
+
+  const handleCloseMap = () => {
+    setIsMapDialogOpen(false);
+  };
+
+  const handleAddPlaceConfirm = (stop) => {
+    setStops([...stops, stop]);
+    setIsMapDialogOpen(false);
+  };
+
   return (
     <FormControl fullWidth margin="normal">
       <FormLabel sx={{ fontWeight: "bold", mb: 1, color: "#000" }}>
-        Stops *
+        Stops * <Button onClick={handleOpenMap}>Add Stop Using Map</Button>
       </FormLabel>
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
         {stops.map((stop, index) => (
@@ -151,10 +166,15 @@ const Stops = ({ stops, setStops }) => {
             sx={{ "& input": { background: "white" } }}
           />
           <Button aria-label="Add Stop" onClick={handleAddStop}>
-            Add Stop
+            Add Stop Manually
           </Button>
         </Box>
       </Box>
+      <MapDialog
+        isOpen={isMapDialogOpen}
+        onClose={handleCloseMap}
+        onConfirm={handleAddPlaceConfirm}
+      />
     </FormControl>
   );
 };
