@@ -10,6 +10,16 @@ const Stop = ({ name, imageURL, address }) => {
         alignItems: { xs: "flex-start", sm: "center" },
         gap: 2,
         flexDirection: { xs: "column", sm: "row" },
+        transition: "box-shadow 0.2s ease",
+        "&:hover": {
+          boxShadow: 6,
+        },
+        "& .MuiCardMedia-root": {
+          transition: "scale 0.2s ease",
+        },
+        "&:hover .MuiCardMedia-root": {
+          scale: 1.05,
+        },
       }}
     >
       {imageURL && (

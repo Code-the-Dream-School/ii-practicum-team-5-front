@@ -57,34 +57,42 @@ const PlanCard = ({
       to={`/plans/${planId}`}
       style={{ textDecoration: "none", width: "100%" }}
     >
-      <Card sx={{ height: "100%" }}>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-end",
-            marginRight: 1,
-          }}
-        >
-          {showBookmarkBtn && (
-            <IconButton
-              onClick={handleBookmark}
-              sx={{
-                position: "absolute",
-                backgroundColor: "white",
-                width: 35,
-                height: 35,
-                marginTop: 1,
-              }}
-            >
-              {bookmark ? (
-                <BookmarkIcon style={{ color: "orange" }} />
-              ) : (
-                <BookmarkBorderIcon />
-              )}
-            </IconButton>
-          )}
-        </Box>
+      <Card
+        sx={{
+          height: "100%",
+          position: "relative",
+          transition: "box-shadow 0.2s ease",
+          "&:hover": {
+            boxShadow: 6,
+          },
+          "& .MuiCardMedia-root": {
+            transition: "scale 0.2s ease",
+          },
+          "&:hover .MuiCardMedia-root": {
+            scale: 1.05,
+          },
+        }}
+      >
+        {showBookmarkBtn && (
+          <IconButton
+            onClick={handleBookmark}
+            sx={{
+              position: "absolute",
+              backgroundColor: "white",
+              width: 35,
+              height: 35,
+              top: 10,
+              right: 10,
+              zIndex: 1,
+            }}
+          >
+            {bookmark ? (
+              <BookmarkIcon style={{ color: "orange" }} />
+            ) : (
+              <BookmarkBorderIcon />
+            )}
+          </IconButton>
+        )}
         <CardMedia
           component="img"
           image={image}

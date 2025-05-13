@@ -34,7 +34,7 @@ function App() {
             <Route path="/user/:userId" element={<UserPage />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/resetpassword/:token" element={<ResetPassword />} />
-            <Route path="/account/" element={<DashboardTheme />}>
+            <Route path="/account" element={<DashboardTheme />}>
               <Route index element={<MyPlans />} />
               <Route path=":planId" element={<EditPlan />} />
               <Route path="bookmarked" element={<Bookmarked />} />

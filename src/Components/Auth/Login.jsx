@@ -16,7 +16,6 @@ import {
 } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import CloseIcon from "@mui/icons-material/Close";
-import { useNavigate } from "react-router-dom";
 import { postData } from "../../util";
 import { useAuth } from "../../context/AuthContext";
 
@@ -24,6 +23,7 @@ const LOGIN_URL = `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/login`;
 const FORGOT_PASSWORD_URL = `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/request-reset-password`;
 
 const LoginPage = ({ open, handleClose, onSwitchToRegister }) => {
+  const isMobile = window.innerWidth < 600;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checkbox, setCheckbox] = useState(false);
@@ -34,7 +34,6 @@ const LoginPage = ({ open, handleClose, onSwitchToRegister }) => {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
 
-  const navigate = useNavigate();
   const { login } = useAuth();
 
   const handleEmailChange = (event) => {
@@ -105,7 +104,7 @@ const LoginPage = ({ open, handleClose, onSwitchToRegister }) => {
       if (data) {
         const { token, _id: userId, name, email, imageURL } = data;
         await login(userId, name, email, imageURL, token);
-        navigate("/");
+        window.location.reload();
         handleDialogClose();
       }
     } catch (error) {
@@ -141,10 +140,11 @@ const LoginPage = ({ open, handleClose, onSwitchToRegister }) => {
       open={open}
       onClose={handleDialogClose}
       maxWidth={false}
+      fullScreen={isMobile}
       slotProps={{
         sx: {
           width: { xs: "100%", sm: "90%", md: "80%" },
-          maxWidth: 600,
+          maxWidth: { xs: "100%", sm: 700 },
           borderRadius: 3,
         },
       }}
@@ -166,10 +166,11 @@ const LoginPage = ({ open, handleClose, onSwitchToRegister }) => {
 
       <DialogContent
         sx={{
-          p: { xs: 4, sm: 8 },
-          m: { xs: 2, sm: 3 },
+          p: { xs: 1, sm: 8 },
+          m: { xs: 0, sm: 3 },
           width: "100%",
-          maxWidth: { xs: 200, sm: 550, lg: 700 },
+          maxWidth: { xs: "100%", sm: 700 },
+          boxSizing: "border-box",
         }}
       >
         <Box>
@@ -379,7 +380,7 @@ const LoginPage = ({ open, handleClose, onSwitchToRegister }) => {
               }}
             >
               <Typography variant="h5" fontWeight="bold" gutterBottom>
-                Welcome to OneDayPlan!
+                Welcome to ZipTrip!
               </Typography>
               <Typography variant="body2" sx={{ mb: 5, p: 2 }}>
                 Get started now and make each day count by planning fun and

@@ -18,8 +18,9 @@ import {
   ListItemText,
   useMediaQuery,
   useTheme,
+  Avatar,
 } from "@mui/material";
-import PersonIcon from "@mui/icons-material/Person";
+import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlined";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useAuth } from "../context/AuthContext";
@@ -60,7 +61,7 @@ const Header = () => {
   const handleLogoutConfirm = () => {
     logout();
     setOpenLogoutDialog(false);
-    navigate("/");
+    window.location.reload();
   };
 
   const handleLogoutCancel = () => {
@@ -78,7 +79,7 @@ const Header = () => {
           {user ? (
             <>
               <ListItem button onClick={() => navigate("/account")}>
-                <ListItemText primary="My Plans" />
+                <ListItemText primary="Dashboard" />
               </ListItem>
               <ListItem button onClick={handleLogoutClick}>
                 <LogoutIcon fontSize="small" sx={{ mr: 1 }} />
@@ -137,20 +138,13 @@ const Header = () => {
             <>
               <Button
                 sx={{
-                  minWidth: "6%",
-                  mr: "8px",
-                  backgroundColor: "white",
-                  color: "inherit",
-                  "&:hover": {
-                    backgroundColor: "white",
-                    color: "#inherit",
-                  },
+                  mr: 1,
                 }}
                 onClick={() => {
                   navigate("/account");
                 }}
               >
-                {<PersonIcon />}My Plans
+                {<SpaceDashboardOutlinedIcon sx={{ mr: 0.5 }} />} Dashboard
               </Button>
               <Button
                 sx={{
@@ -169,7 +163,14 @@ const Header = () => {
                 }}
                 onClick={handleClickMenu}
               >
-                👋 Hello, {user.name.split(" ")[0]}! {<ArrowDropDownIcon />}
+                👋 Hello, {user.name.split(" ")[0]}
+                <Avatar
+                  className="avatar-hover"
+                  alt={user.name}
+                  src={user.imageURL}
+                  sx={{ width: 24, height: 24, bgcolor: "#4CAF50", ml: 1 }}
+                />
+                {<ArrowDropDownIcon />}
               </Button>
               <Menu
                 anchorEl={anchorElement}
