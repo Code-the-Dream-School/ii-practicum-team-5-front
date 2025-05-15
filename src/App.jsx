@@ -19,6 +19,7 @@ import {
 import MainLayout from "./Components/Layout/MainLayout";
 import ForgotPassword from "./Components/Auth/ForgotPassword";
 import ResetPassword from "./Components/Auth/ResetPassword";
+import ProtectedRoute from "./Components/Auth/ProtectedRoute";
 
 function App() {
   return (
@@ -34,7 +35,14 @@ function App() {
             <Route path="/user/:userId" element={<UserPage />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/resetpassword/:token" element={<ResetPassword />} />
-            <Route path="/account" element={<DashboardTheme />}>
+            <Route
+              path="/account"
+              element={
+                <ProtectedRoute>
+                  <DashboardTheme />
+                </ProtectedRoute>
+              }
+            >
               <Route index element={<MyPlans />} />
               <Route path=":planId" element={<EditPlan />} />
               <Route path="bookmarked" element={<Bookmarked />} />

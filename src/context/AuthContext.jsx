@@ -14,6 +14,8 @@ const AuthProvider = ({ children }) => {
     return localStorage.getItem("token");
   });
 
+  // TODO: Validate token and also check the expiration.
+
   const login = (userId, name, email, imageURL, token) => {
     const userData = {
       userId,
