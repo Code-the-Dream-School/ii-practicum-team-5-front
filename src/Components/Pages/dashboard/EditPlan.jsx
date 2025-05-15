@@ -25,6 +25,7 @@ function EditPlan() {
   const [categories, setCategories] = useState([]);
   const [isPlanExists, setIsPlanExists] = useState(false);
   const { token, user } = useAuth();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // FIXME: Instead of just redirecting user to home, show a not authorized message with login button or redirect to login page
@@ -32,6 +33,7 @@ function EditPlan() {
     if (!planId) return navigate("/account");
 
     (async () => {
+      setIsLoading(true);
       const data = await getPlan(token, planId, setError);
       if (!data) return setIsPlanExists(false);
       setIsPlanExists(true);
@@ -45,6 +47,7 @@ function EditPlan() {
         userId: data.userId?._id,
       });
       setCategories(categoriesData);
+      setIsLoading(false);
     })();
   }, []);
 
@@ -56,13 +59,15 @@ function EditPlan() {
     navigate("/account");
   };
 
-  if (!isPlanExists)
+  if (!isLoading && !isPlanExists)
     return (
       <Typography color="error">
         Plan not found or does not exist. Please go back to{" "}
         <Link to="/account">your plans</Link>.
       </Typography>
     );
+
+  if (isLoading) return <Box>Loading ...</Box>;
 
   return (
     <>

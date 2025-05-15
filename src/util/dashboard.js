@@ -1,22 +1,7 @@
 const API_V1_BASE_URL = `${import.meta.env.VITE_API_BASE_URL}/api/v1`;
 
-const getMyPlans = async (token, onError) => {
-  try {
-    let res = await fetch(`${API_V1_BASE_URL}/account/plans`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    if (!res.ok) {
-      const errorData = await res.json();
-      onError(errorData.msg || "Failed to fetch plans");
-      return null;
-    }
-    return await res.json();
-  } catch (error) {
-    onError(error.message || "An error occurred while fetching plans");
-    return null;
-  }
+const getMyPlans = async (params, token, onError) => {
+  return await getData(`/account/plans?${params}`, token, onError);
 };
 
 const deletePlan = async (token, planId, onError) => {
@@ -40,22 +25,7 @@ const deletePlan = async (token, planId, onError) => {
 };
 
 const getPlan = async (token, planId, onError) => {
-  try {
-    let res = await fetch(`${API_V1_BASE_URL}/account/plans/${planId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    if (!res.ok) {
-      const errorData = await res.json();
-      onError(errorData.msg || "Failed to fetch plan");
-      return null;
-    }
-    return await res.json();
-  } catch (error) {
-    onError(error.message || "An error occurred while fetching the plan");
-    return null;
-  }
+  return await getData(`/account/plans/${planId}`, token, onError);
 };
 
 const updatePlan = async (token, plan, onError) => {
@@ -103,23 +73,7 @@ const createPlan = async (token, plan, onError) => {
 };
 
 const getCategories = async (token, onError) => {
-  try {
-    let res = await fetch(`${API_V1_BASE_URL}/account/categories`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    if (!res.ok) {
-      const errorData = await res.json();
-      onError(errorData.msg || "Failed to fetch categories");
-      return null;
-    }
-    return await res.json();
-  } catch (error) {
-    onError(error.message || "An error occurred while fetching categories");
-    return null;
-  }
+  return await getData(`/account/categories`, token, onError);
 };
 
 const AddBookmark = async (token, planId, onError) => {
@@ -162,22 +116,28 @@ const removeBookmark = async (token, planId, onError) => {
   }
 };
 
-const getBookmarks = async (token, onError) => {
+const getBookmarks = async (params, token, onError) => {
+  return await getData(`/account/bookmarks?${params}`, token, onError);
+};
+
+const getData = async (endpoint, token = "", onError) => {
   try {
-    let res = await fetch(`${API_V1_BASE_URL}/account/bookmarks`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+    let res = await fetch(`${API_V1_BASE_URL}${endpoint}`, {
+      ...(token && {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }),
     });
     if (!res.ok) {
       const errorData = await res.json();
-      onError(errorData.msg || "Failed to fetch bookmarks");
+      onError(errorData.msg || "Failed to fetch plans");
       return null;
     }
     return await res.json();
   } catch (error) {
-    onError(error.message || "An error occurred while fetching bookmarks");
-    return false;
+    onError(error.message || "An error occurred while fetching plans");
+    return null;
   }
 };
 
